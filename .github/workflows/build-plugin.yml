@@ -26,7 +26,6 @@ jobs:
       - name: Build plugin (SW 6.7)
         run: |
           shopware-cli extension build "./ProductSliderHero" \
-            --shopware-version=6.7.0.0 \
             --build-zip \
             --release
 
