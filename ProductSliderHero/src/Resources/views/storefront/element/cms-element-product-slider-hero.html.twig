@@ -1,0 +1,17 @@
+{% block element_product_slider_hero %}
+    <div class="product-slider-hero" data-product-slider-hero>
+        {% if element.data.products and element.data.products|length > 0 %}
+            <div class="product-slider-hero__track">
+                {% for product in element.data.products %}
+                    <div class="product-slider-hero__slide">
+                        {% sw_include '@Storefront/storefront/component/product/card/box.html.twig' with {
+                            product: product,
+                            layout: 'standard'
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+

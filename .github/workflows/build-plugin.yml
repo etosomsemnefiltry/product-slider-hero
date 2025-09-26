@@ -1,0 +1,50 @@
+name: Build Shopware Plugin
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Shopware CLI
+        run: |
+          curl -s https://shopware.github.io/shopware-cli/install.sh | bash
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Build plugin (SW 6.7)
+        run: |
+          shopware-cli extension build "./ProductSliderHero" \
+            --shopware-version=6.7.0.0 \
+            --build-zip \
+            --release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ProductSliderHero-dist
+          path: ProductSliderHero/dist/*.zip
+
+  attach-to-release:
+    if: github.event_name == 'release'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ProductSliderHero-dist
+          path: dist
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.zip
+
