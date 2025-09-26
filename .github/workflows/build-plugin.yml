@@ -18,8 +18,10 @@ jobs:
 
       - name: Setup Shopware CLI
         run: |
-          curl -fsSL https://shopware.github.io/shopware-cli/install.sh | bash
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          curl -1sLf 'https://dl.cloudsmith.io/public/friendsofshopware/stable/setup.deb.sh' | sudo -E bash
+          sudo apt-get update
+          sudo apt-get install -y shopware-cli
+          shopware-cli --version
 
       - name: Build plugin (SW 6.7)
         run: |
