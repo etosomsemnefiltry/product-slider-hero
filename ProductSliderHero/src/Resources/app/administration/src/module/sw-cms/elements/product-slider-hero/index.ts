@@ -80,7 +80,7 @@ Shopware.Service('cmsService').registerCmsElement({
         },
         productStreamLimit: {
             source: 'static',
-            value: 3,
+            value: 1,
         },
     },
     collect: Shopware.Service('cmsService').getCollectFunction(),

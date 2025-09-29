@@ -1,0 +1,8 @@
+{% block block_product_slider_hero %}
+    {% set element = block.slots.getSlot('productSlider') %}
+    {% if element %}
+        {% sw_include '@Storefront/storefront/element/cms-element-' ~ element.type ~ '.html.twig' with { element: element } %}
+    {% endif %}
+{% endblock %}
+
+
