@@ -1,0 +1,113 @@
+{% block component_product_box_hero %}
+    {% set product = product %}
+    {% set name = product.translated.name %}
+    {% set id = product.id %}
+    {% set cover = product.cover.media %}
+    {% set price = product.calculatedPrice %}
+    {% set listPrice = product.calculatedListPrice %}
+    {% set variantListingConfig = product.variantListingConfig %}
+
+    <div class="card product-hero-card">
+        <div class="product-hero-card__inner">
+            {% block component_product_box_hero_image %}
+                <div class="product-hero-card__image-container">
+                    {% if cover.url %}
+                        {% block component_product_box_hero_image_link %}
+                            <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                               class="product-hero-card__image-link"
+                               title="{{ name }}">
+                                {% block component_product_box_hero_image_element %}
+                                    <img src="{{ cover.url }}"
+                                         class="product-hero-card__image img-fluid"
+                                         alt="{{ cover.translated.alt ?: name }}"
+                                         title="{{ cover.translated.title ?: name }}">
+                                {% endblock %}
+                            </a>
+                        {% endblock %}
+                    {% else %}
+                        {% block component_product_box_hero_image_placeholder %}
+                            <div class="product-hero-card__image-placeholder">
+                                {% sw_icon 'placeholder' style {'size': 'fluid'} %}
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                </div>
+            {% endblock %}
+
+            {% block component_product_box_hero_content %}
+                <div class="product-hero-card__content">
+                    {% block component_product_box_hero_discount_badge %}
+                        {% if listPrice.percentage > 0 %}
+                            <div class="product-hero-card__discount-badge">
+                                <span class="badge badge-discount-large">-{{ listPrice.percentage }}%</span>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+
+                    {% block component_product_box_hero_badges %}
+                        <div class="product-hero-card__badges mb-4">
+                            <div class="badge badge-combined d-flex justify-content-between">
+                                <div class="discount-amount">
+                                {% if product.calculatedPrice.listPrice.percentage > 0 %}
+                                    -{{ product.calculatedPrice.listPrice.percentage|round(1, 'floor') }}% 
+                                {% endif %}
+                                </div>
+                                <div class="top3-badge">
+                                    TOP 3
+                                </div>
+                            </div>
+                        </div>
+                    {% endblock %}
+
+                    {% block component_product_box_hero_name %}
+                        <h3 class="product-hero-card__name">
+                            {% if cover.url %}
+                                <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                                   class="h1 product-hero-card__name-link"
+                                   title="{{ name }}">
+                                    {{ name }}
+                                </a>
+                            {% else %}
+                                {{ name }}
+                            {% endif %}
+                        </h3>
+                    {% endblock %}
+
+                    {% block component_product_box_hero_description %}
+                        <div class="product-hero-card__description">
+                            {{ product.translated.description|striptags|slice(0, 120) }}{% if product.translated.description|length > 120 %}...{% endif %}
+                        </div>
+                    {% endblock %}
+
+                    {% block component_product_box_hero_prices %}
+                        <div class="product-hero-card__prices d-flex justify-content-between">
+                           
+                            <div class="product-hero-card__price-container">
+                                <div class="product-hero-card__price-current">
+                                    ab {{ price.unitPrice|currency }}
+                                </div>
+                                {% if product.calculatedPrice.listPrice.percentage > 0 %}
+                                    <div class="product-hero-card__price-original">
+                                        Statt: {{ product.calculatedPrice.listPrice.price|currency }}
+                                    </div>
+                                {% endif %}
+                                
+                            </div>
+                            
+                            {% block component_product_box_hero_action %}
+                                <div class="product-hero-card__action">
+                                    <a href="{{ seoUrl('frontend.detail.page', {'productId': id}) }}"
+                                    class="btn product-hero-card__button"
+                                    title="{{ name }}">
+                                        zum Angebot
+                                    </a>
+                                </div>
+                            {% endblock %}
+                        </div>
+                    {% endblock %}
+
+                </div>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

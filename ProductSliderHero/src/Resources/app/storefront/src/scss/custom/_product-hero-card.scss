@@ -1,0 +1,222 @@
+// Стили для hero карточки продукта
+:root {
+    --hero-card-bg: #ffffff;
+    --hero-card-red: #dc3545;
+    --hero-card-red-hover: #c82333;
+    --hero-card-red-border: #bd2130;
+    --hero-card-text-dark: #212529;
+    --hero-card-text-muted: #353535;
+    --hero-card-border-gray: #939393;
+    --hero-card-border-dark: #6c6c6c;
+}
+
+.product-hero-card {
+    background: var(--hero-card-bg);
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 100%;
+    
+    &__inner {
+        display: flex;
+        height: 100%;
+        min-height: 300px;
+    }
+    
+    &__image-container {
+        flex: 0 0 50%;
+        max-width: 50%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        margin: 1rem;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+        
+        &:hover img {
+            transform: scale(1.05);
+        }
+    }
+    
+    &__image-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-decoration: none;
+    }
+    
+    &__image-placeholder {
+        width: 100%;
+        height: 100%;
+        background: var(--hero-card-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--hero-card-text-muted);
+    }
+    
+    &__content {
+        flex: 1;
+        padding: 1rem 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+    }
+    
+    &__discount-badge {
+        margin-bottom: 1rem;
+        
+        .badge {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 16px;
+            
+            
+            &.badge-discount-large {
+                background: var(--hero-card-red);
+                color: white;
+                display: inline-block;
+                border: 1px solid var(--hero-card-border-gray);
+            }
+        }
+    }
+    
+    &__badges {
+        
+        
+        .badge {
+            padding: 0.5rem 2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-radius: 16px;
+            margin:0;
+            &.badge-combined {
+                background: var(--hero-card-red);
+                color: white;
+                width: 160px;
+                border: 1px solid var(--hero-card-border-dark);
+            }
+        }
+    }
+    
+    &__name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--hero-card-text-dark);
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+        
+        a {
+            color: inherit;
+            text-decoration: none;
+            
+            &:hover {
+                color: var(--hero-card-red);
+            }
+        }
+    }
+    
+    &__description {
+        color: var(--hero-card-text-muted);
+        font-size: 1.3rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+    }
+    
+    &__prices {
+        margin-bottom: 1.5rem;
+    }
+    
+    &__price-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    &__price-current {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--hero-card-red);
+    }
+    
+    &__price-original {
+        font-size: 1rem;
+        color: var(--hero-card-text-muted);
+    }
+    
+    &__action {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    &__button {
+        padding: 0.3rem 1.5rem;
+        font-weight: 700;
+        border-radius: 16px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.6rem;
+        border: 1px solid var(--hero-card-border-dark);
+        background: var(--hero-card-red);
+        color: var(--hero-card-bg);
+        height: fit-content;
+        
+        &:hover {
+            background: var(--hero-card-red-hover);
+            color: var(--hero-card-bg);
+            border-color: var(--hero-card-red-border);
+            color: var(--hero-card-bg);
+        }
+    }
+}
+
+// Адаптивность для мобильных устройств
+@media (max-width: 768px) {
+    .product-hero-card {
+        &__inner {
+            flex-direction: column;
+            min-height: auto;
+        }
+        
+        &__image-container {
+            flex: none;
+            max-width: 100%;
+            height: 200px;
+            margin: 1rem;
+            border-radius: 12px;
+            
+            img {
+                border-radius: 12px;
+            }
+        }
+        
+        &__content {
+            padding: 1.5rem;
+        }
+        
+        &__badges {
+            position: static;
+            flex-direction: row;
+            margin-bottom: 1rem;
+            justify-content: flex-end;
+        }
+        
+        &__name {
+            font-size: 1.25rem;
+        }
+        
+        &__action {
+            justify-content: center;
+        }
+    }
+}
