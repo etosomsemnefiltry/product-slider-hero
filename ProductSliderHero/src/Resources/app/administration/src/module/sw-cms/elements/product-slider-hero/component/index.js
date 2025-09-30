@@ -18,7 +18,7 @@ export default {
 
     data() {
         return {
-            sliderBoxLimit: 3,
+            sliderBoxLimit: 1,
         };
     },
 
@@ -131,7 +131,7 @@ export default {
                 this.element.config.elMinWidth.value === 'px' ||
                 this.element.config.elMinWidth.value.indexOf('px') === -1
             ) {
-                this.sliderBoxLimit = 3;
+                this.sliderBoxLimit = 1;
                 return;
             }
 
@@ -148,7 +148,7 @@ export default {
                 elWidth -= fakeLookWidth;
             }
 
-            this.sliderBoxLimit = Math.floor(boxWidth / (elWidth + elGap));
+            this.sliderBoxLimit = 1;
         },
 
         getProductEl(product) {
