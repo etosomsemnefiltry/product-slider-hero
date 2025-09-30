@@ -1,18 +1,19 @@
 {% block sw_cms_block_product_slider_hero_preview %}
 <div class="sw-cms-preview-product-slider-hero">
+	<h2>Custom Slider</h2>
     <mt-icon
         name="regular-chevron-left"
-        size="12"
+        size="20"
     />
-    <img
+    <div class="sw-cms-preview-product-slider-hero__product-box">
+        <img
                 :src="assetFilter('/administration/administration/static/img/cms/preview_glasses_small.jpg')"
                 alt=""
             >
+    </div>
     <mt-icon
         name="regular-chevron-right"
-        size="12"
+        size="20"
     />
 </div>
 {% endblock %}
-
-
