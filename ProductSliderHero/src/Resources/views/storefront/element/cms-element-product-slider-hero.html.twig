@@ -8,7 +8,7 @@
             {% set baseSliderOptions = {
                 slider: {
                     controls: sliderConfig.navigationArrows.value in visibleValues,
-                    nav: false,
+                    dots: true,
                     navPosition: 'bottom',
                     mouseDrag: true,
                     autoplay: sliderConfig.rotate.value,
@@ -76,7 +76,9 @@
                                                         aria-label="{{ 'general.previous'|trans|striptags }}"
                                                     >
                                                         {% block element_product_slider_controls_items_prev_icon %}
-                                                            {% sw_icon 'arrow-head-left' %}
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="5 7 15 10" fill="none" stroke="#c52b3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;/* border-radius:50%; *//* background:#fff; */">
+                                                                <polyline points="14 6 8 12 14 18"></polyline>
+                                                            </svg>
                                                         {% endblock %}
                                                     </button>
                                                     <button
@@ -84,7 +86,9 @@
                                                         aria-label="{{ 'general.next'|trans|striptags }}"
                                                     >
                                                         {% block element_product_slider_controls_items_next_icon %}
-                                                            {% sw_icon 'arrow-head-right' %}
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="5 7 15 10" fill="none" stroke="#c52b3f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="cursor:pointer;/* border-radius:50%; *//* background:#fff; */">
+                                                                <polyline points="10 6 16 12 10 18"/>
+                                                            </svg>
                                                         {% endblock %}
                                                     </button>
                                                 {% endblock %}

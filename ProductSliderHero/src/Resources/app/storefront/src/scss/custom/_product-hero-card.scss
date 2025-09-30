@@ -10,13 +10,33 @@
     --hero-card-border-dark: #6c6c6c;
 }
 
+.cms-element-product-slider-hero{
+	.tns-nav {
+        display:flex;
+        justify-content: center;
+
+        button {
+            padding: 5px 40px;
+            margin: 5px;
+            border-radius: 8px;
+            min-width: 10px;
+            border-color: var(--hero-card-red);
+            background: var(--hero-card-bg);
+
+            &.tns-nav-active {
+                background: var(--hero-card-red);
+            }
+        }
+    }
+}
+
 .product-hero-card {
     background: var(--hero-card-bg);
     border: none;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     height: 100%;
+    padding: 0 25px;
     
     &__inner {
         display: flex;
@@ -64,7 +84,7 @@
     
     &__content {
         flex: 1;
-        padding: 1rem 0.5rem;
+        margin: 1rem 0.5rem;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -92,6 +112,9 @@
     
     &__badges {
         
+        .top3-badge {
+            margin-left:2rem;
+        }
         
         .badge {
             padding: 0.5rem 2rem;
@@ -102,7 +125,7 @@
             &.badge-combined {
                 background: var(--hero-card-red);
                 color: white;
-                width: 160px;
+                width: fit-content;
                 border: 1px solid var(--hero-card-border-dark);
             }
         }
@@ -134,7 +157,7 @@
     }
     
     &__prices {
-        margin-bottom: 1.5rem;
+       
     }
     
     &__price-container {

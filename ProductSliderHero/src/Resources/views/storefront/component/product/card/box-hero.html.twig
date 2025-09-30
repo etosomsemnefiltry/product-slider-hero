@@ -46,7 +46,7 @@
 
                     {% block component_product_box_hero_badges %}
                         <div class="product-hero-card__badges mb-4">
-                            <div class="badge badge-combined d-flex justify-content-between">
+                            <div class="badge badge-combined d-flex">
                                 <div class="discount-amount">
                                 {% if product.calculatedPrice.listPrice.percentage > 0 %}
                                     -{{ product.calculatedPrice.listPrice.percentage|round(1, 'floor') }}% 
@@ -80,9 +80,9 @@
                     {% endblock %}
 
                     {% block component_product_box_hero_prices %}
-                        <div class="product-hero-card__prices d-flex justify-content-between">
+                        <div class="product-hero-card__prices d-sm-flex justify-content-between">
                            
-                            <div class="product-hero-card__price-container">
+                            <div class="product-hero-card__price-container mb-3">
                                 <div class="product-hero-card__price-current">
                                     ab {{ price.unitPrice|currency }}
                                 </div>
